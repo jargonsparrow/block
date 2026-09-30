@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOMA ACHA UJINGA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+:root {
+    --bg: #0a0a0f;
+    --bg-gradient: radial-gradient(ellipse at center, #12121a 0%, #0a0a0f 70%);
+    --primary: #00ff41;
+    --primary-dim: #00cc33;
+    --secondary: #ff006e;
+    --accent: #ffbe0b;
+    --danger: #ff2a2a;
+    --text: #e0e0e0;
+    --text-dim: #9a9a9a;
+    --border: #1a1a2e;
+    --glitch-red: #ff0a44;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 65, 0.03) 2px,
+            rgba(0, 255, 65, 0.03) 4px
+        );
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 255, 65, 0.02) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanline-move 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes scanline-move {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 2.5rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    line-height: 1.2;
+}
+
+h1::before,
+h1::after {
+    content: 'SOMA ACHA UJINGA';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--danger);
+    text-shadow:
+        2px 0 0 var(--secondary),
+        -2px 0 0 var(--secondary);
+    clip-path: inset(0 0 50% 0);
+}
+
+h1::after {
+    color: var(--accent);
+    text-shadow:
+        2px 0 0 var(--secondary),
+        -2px 0 0 var(--secondary);
+    clip-path: inset(50% 0 0 0);
+}
+
+.glitch {
+    position: relative;
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.glitch::before {
+    left: 3px;
+    text-shadow: -3px 0 var(--danger);
+    clip: rect(42px, 550px, 56px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -3px;
+    text-shadow: -3px 0 var(--glitch-red);
+    clip: rect(18px, 550px, 32px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(12px, 9999px, 8px, 0); }
+    5% { clip: rect(55px, 9999px, 20px, 0); }
+    10% { clip: rect(8px, 9999px, 30px, 0); }
+    15% { clip: rect(40px, 9999px, 60px, 0); }
+    20% { clip: rect(20px, 9999px, 50px, 0); }
+    25% { clip: rect(30px, 9999px, 60px, 0); }
+    30% { clip: rect(10px, 9999px, 40px, 0); }
+    35% { clip: rect(50px, 9999px, 70px, 0); }
+    40% { clip: rect(25px, 9999px, 45px, 0); }
+    45% { clip: rect(5px, 9999px, 55px, 0); }
+    50% { clip: rect(35px, 9999px, 75px, 0); }
+    55% { clip: rect(15px, 9999px, 38px, 0); }
+    60% { clip: rect(45px, 9999px, 70px, 0); }
+    65% { clip: rect(0px, 9999px, 35px, 0); }
+    70% { clip: rect(55px, 9999px, 90px, 0); }
+    75% { clip: rect(10px, 9999px, 65px, 0); }
+    80% { clip: rect(30px, 9999px, 70px, 0); }
+    85% { clip: rect(20px, 9999px, 50px, 0); }
+    90% { clip: rect(40px, 9999px, 80px, 0); }
+    95% { clip: rect(15px, 9999px, 45px, 0); }
+    100% { clip: rect(5px, 9999px, 30px, 0); }
+}
+
+.warning {
+    background: rgba(255, 0, 110, 0.15);
+    border: 2px solid var(--secondary);
+    border-radius: 6px;
+    padding: 1.2rem 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow:
+        0 0 20px rgba(255, 0, 110, 0.4),
+        inset 0 0 15px rgba(255, 0, 110, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.warning::before {
+    content: '!';
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    font-size: 0.7rem;
+    color: var(--secondary);
+    opacity: 0.6;
+}
+
+.warning h2 {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.3;
+    text-shadow: 0 0 8px rgba(255, 0, 110, 0.5);
+}
+
+.subtitle {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.subtitle strong {
+    color: var(--accent);
+}
+
+.resources {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+}
+
+.resources li {
+    background: rgba(10, 10, 15, 0.8);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.resources li:hover {
+    background: rgba(0, 255, 65, 0.08);
+    border-left-color: var(--accent);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.resources li:nth-child(2n) {
+    border-left-color: var(--secondary);
+}
+
+.resources li:nth-child(2n):hover {
+    border-left-color: var(--accent);
+    background: rgba(255, 0, 110, 0.08);
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.2);
+}
+
+.resources a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.resources a::before {
+    content: '[>] ';
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.resources a:hover {
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(255, 190, 23, 0.7);
+}
+
+.resources a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.resources a:hover::after {
+    width: 100%;
+}
+
+.footer {
+    margin-top: 2rem;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.cursor-blink {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background: var(--primary);
+    margin-left: 3px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; letter-spacing: 0.1em; }
+    .warning h2 { font-size: 1.1rem; }
+    .resources { gap: 0.5rem; }
+}
+
+    </style>
+    
+</head>
+
+<body>
+    <div class="scanline"></div>
+    <div class="container">
+        <header>
+            <h1 class="glitch" data-text="SOMA ACHA UJINGA">SOMA ACHA UJINGA</h1>
+        </header>
+        <div class="warning">
+            <H2 class="glitch" data-text="OOOPS LOOKS LIKE IT'S TIME TO READ YOU MOTHERFUCKER LOL">OOOPS LOOKS LIKE IT'S TIME TO READ YOU MOTHERFUCKER LOL</H2>
+        </div>
+        <h3 class="subtitle">But You Can Check Below Resources Which can Help You<span class="cursor-blink"></span></h3>
+        <ul class="resources">
+            <li><a href="https://overthewire.org">OverTheWire</a></li>
+            <li><a href="https://pwn.college">PWN.COLLEGE</a></li>
+        </ul>
+        <p class="footer">SOMA ACHA UJINGA &middot; EDUCATIONAL PURPOSES ONLY</p>
+    </div>
+</body>
+</html>
