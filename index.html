@@ -11,14 +11,11 @@
     --bg: #0a0a0f;
     --bg-gradient: radial-gradient(ellipse at center, #12121a 0%, #0a0a0f 70%);
     --primary: #00ff41;
-    --primary-dim: #00cc33;
     --secondary: #ff006e;
     --accent: #ffbe0b;
-    --danger: #ff2a2a;
     --text: #e0e0e0;
     --text-dim: #9a9a9a;
     --border: #1a1a2e;
-    --glitch-red: #ff0a44;
 }
 
 * {
@@ -95,38 +92,19 @@ header {
 h1 {
     font-size: 3.5rem;
     font-weight: 700;
-    color: var(--primary);
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    position: relative;
-    display: inline-block;
     padding: 0.5rem 1.5rem;
     line-height: 1.2;
+    background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-h1::before,
-h1::after {
-    content: 'SOMA ACHA UJINGA';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: var(--danger);
-    text-shadow:
-        2px 0 0 var(--secondary),
-        -2px 0 0 var(--secondary);
-    clip-path: inset(0 0 50% 0);
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; letter-spacing: 0.1em; }
 }
-
-h1::after {
-    color: var(--accent);
-    text-shadow:
-        2px 0 0 var(--secondary),
-        -2px 0 0 var(--secondary);
-    clip-path: inset(50% 0 0 0);
-}
-
 
 .warning {
     background: rgba(255, 0, 110, 0.15);
@@ -265,7 +243,6 @@ h1::after {
 }
 
 @media (max-width: 600px) {
-    h1 { font-size: 2rem; letter-spacing: 0.1em; }
     .warning h2 { font-size: 1.1rem; }
     .resources { gap: 0.5rem; }
 }
@@ -278,10 +255,10 @@ h1::after {
     <div class="scanline"></div>
     <div class="container">
         <header>
-            <h1 class="glitch" data-text="SOMA ACHA UJINGA">SOMA ACHA UJINGA</h1>
+            <h1>SOMA ACHA UJINGA</h1>
         </header>
         <div class="warning">
-            <H2 class="glitch" data-text="OOOPS LOOKS LIKE IT'S TIME TO READ YOU MOTHERFUCKER LOL">OOOPS LOOKS LIKE IT'S TIME TO READ YOU MOTHERFUCKER LOL</H2>
+            <H2>OOOPS LOOKS LIKE IT'S TIME TO READ YOU MOTHERFUCKER LOL</H2>
         </div>
         <h3 class="subtitle">But You Can Check Below Resources Which can Help You<span class="cursor-blink"></span></h3>
         <ul class="resources">
